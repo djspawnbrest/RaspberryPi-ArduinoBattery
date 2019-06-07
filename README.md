@@ -2,9 +2,9 @@
 Display Battery indicators on Raspbian, libreelec(kodi), Recalbox
 
 ## Branches:
-    - raspbian - Raspbian applet battery indicator
-    - libreelec - LibreELEC battery indicator
-    - recalbox - RECALBOX OS battery indicator
+    - [raspbian](https://github.com/djspawnbrest/RaspberryPi-ArduinoBattery/tree/raspbian) - Raspbian applet battery indicator
+    - [libreelec](https://github.com/djspawnbrest/RaspberryPi-ArduinoBattery/tree/libreelec) - LibreELEC battery indicator
+    - [recalbox](https://github.com/djspawnbrest/RaspberryPi-ArduinoBattery/tree/recalbox) - RECALBOX OS battery indicator
 
 sketch.ino - firmware for arduino
 
