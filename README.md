@@ -7,3 +7,5 @@ Display Battery indicators on Raspbian as lx panel applet
 2. Open Terminal and type 'sudo lxpanelctl restart'
 3. Open lxpanel settings and add Arduino Battery applet on panel
 4. Enjoy!
+
+![Screenshot example](https://github.com/djspawnbrest/RaspberryPi-ArduinoBattery/blob/raspbian/screenshot.png)
