@@ -9,8 +9,8 @@ sys.path.append('/storage/.kodi/addons/virtual.system-tools/lib')
 import smbus
 
 # Config
-bus = smbus.SMBus(1)
-address = 0x20
+bus = smbus.SMBus(1) # init i2c bus
+address = 0x20 # i2c arduino addres
 iconState = ""
 ADDON = xbmcaddon.Addon()
 CWD = ADDON.getAddonInfo('path').decode("utf-8")
@@ -18,16 +18,17 @@ PNGVIEWPATH = xbmc.translatePath( os.path.join( CWD, 'resources', 'png' ).encode
 ICONPATH = xbmc.translatePath( os.path.join( CWD, 'resources', 'icons' ).encode("utf-8") ).decode("utf-8")
 
 # Capacity config
-VRef = 1.082
+# VBat <--[Rh]--(AnalogPin)--[Rl]--| GND
+VRef = 1.082 # Vref arduino (must be measured)
 Rh = 46.87 # kOm
 Rl = 10.11 # kOm
-cell_min = 3.20 # min charge cell
-cell_max = 4.15 # max charge cell
+cell_min = 3.20 # min charge cell (volts)
+cell_max = 4.15 # max charge cell (volts)
 oldPrc = None
 oldChg = None
-# Process kill
+# Process kill flag
 kill = False
-# icon offset
+# icon offset (px)
 offset = 42
 
 # chmod for pngview
@@ -76,16 +77,16 @@ if __name__ == '__main__':
         # code
         try:
             VoltMult = (Rh + Rl) / Rl
-            buf = bus.read_i2c_block_data(address,0x00,3)
-            AnalogVal = buf[0] << 8 | buf[1]
-            Volt = AnalogVal * VoltMult * VRef / 1023
-            prcnt = int(round( ((Volt - cell_min) * 100) / (cell_max - cell_min) ))
+            buf = bus.read_i2c_block_data(address,0x00,3) # read values from i2c (arduino)
+            AnalogVal = buf[0] << 8 | buf[1] # convert byte values to Vbat analog value from arduino
+            Volt = AnalogVal * VoltMult * VRef / 1023 # convert in battery voltage
+            prcnt = int(round( ((Volt - cell_min) * 100) / (cell_max - cell_min) )) # convert battery voltage to Capacity
             if prcnt < 0:
                 prcnt = 0
             elif prcnt > 100:
                 prcnt = 100
 
-            res = changePerc(prcnt)
+            res = changePerc(prcnt) # get icon Capacity value
 
             if res != oldPrc or buf[2] != oldChg:
                 oldChg = buf[2]
@@ -94,7 +95,7 @@ if __name__ == '__main__':
                     kill = False
                     os.system("killall pngview")
 
-                chg = str(int(buf[2]))
+                chg = str(int(buf[2])) # read charger flag (charger - 1 | 0 - not)
                 changeicon(str(res), chg)
         except:
             pass
