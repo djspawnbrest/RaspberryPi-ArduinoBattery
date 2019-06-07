@@ -1,2 +1,2 @@
 # RaspberryPi-ArduinoBattery
-Display Battery indicators on Raspbian, libreelec(kodi), Recalbox
+## Add-on: Display Battery indicator on libreelec(kodi)
