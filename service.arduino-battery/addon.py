@@ -17,13 +17,6 @@ CWD = ADDON.getAddonInfo('path').decode("utf-8")
 PNGVIEWPATH = xbmc.translatePath( os.path.join( CWD, 'resources', 'png' ).encode("utf-8") ).decode("utf-8")
 ICONPATH = xbmc.translatePath( os.path.join( CWD, 'resources', 'icons' ).encode("utf-8") ).decode("utf-8")
 
-# Calculate screen width
-win = xbmcgui.Window(10000)
-width = win.getWidth()
-height = win.getHeight()
-x = width - 42
-y = height - 42
-
 # Capacity config
 VRef = 1.082
 Rh = 46.87 # kOm
@@ -34,6 +27,8 @@ oldPrc = None
 oldChg = None
 # Process kill
 kill = False
+# icon offset
+offset = 42
 
 # chmod for pngview
 os.system("chmod 755 " + PNGVIEWPATH + "/pngview")
@@ -41,9 +36,13 @@ os.system("chmod 755 " + PNGVIEWPATH + "/pngview")
 def changeicon(percent, flag):
     global iconState
     global kill
+    global offset
     if iconState != percent:
         iconsState = percent
         kill = True
+        # Calculate screen width
+        x = xbmcgui.getScreenWidth() - offset
+        y = xbmcgui.getScreenHeight() - offset
         os.system(PNGVIEWPATH + "/pngview -b 0 -l 3000 -x " + str(x) + " -y " + str(y) + " " + ICONPATH + "/batt" + percent + "_" + flag + ".png &")
 
 def changePerc(prc):
@@ -99,5 +98,5 @@ if __name__ == '__main__':
                 changeicon(str(res), chg)
         except:
             pass
-            time.sleep(5) # seconds
+            time.sleep(5) # sleep 5 seconds
         xbmc.sleep(2000) # 1000 - 1 time on second
