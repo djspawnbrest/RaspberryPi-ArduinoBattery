@@ -1,0 +1,2 @@
+1.0.1 The first release shows the battery icon in the bottom-right corner.
+1.0.0 Initial Release

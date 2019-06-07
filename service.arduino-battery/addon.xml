@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="service.arduino-battery" name="Arduino Battery Indicator" version="1.0.1" provider-name="Spawn">
+	<requires>
+		<import addon="xbmc.python" version="2.25.0"/>
+		<import addon="virtual.system-tools" version="9.0.111"/>
+		<import addon="virtual.rpi-tools" version="9.0.106"/>
+	</requires>
+	<extension point="xbmc.service" library="addon.py"/>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Arduino Battery Indicator by Spawn</summary>
+		<description lang="en">
+Shows the battery icon in the bottom-right corner using the analog input of arduino as a voltage divider.
+		</description>
+		<license>GNU General Public License, v2</license>
+		<language></language>
+		<disclamer></disclamer>
+		<source>https://github.com/djspawnbrest/RaspberryPi-ArduinoBattery/tree/libreelec</source> 
+		<website>https://vk.com/alexspawn</website>
+		<email>djspawnbrest@gmail.com</email>
+		<news>
+1.0.1 (7 june 2019)
+	- The first release shows the battery icon in the bottom-right corner.
+1.0.0 (6 june 2019)
+	- Initial Release
+		</news>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets>
+	</extension>
+</addon>
