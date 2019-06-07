@@ -1,5 +1,5 @@
 # RaspberryPi-ArduinoBattery
-Display Battery indicators on Raspbian as lx panel applet
+Display Battery indicator on Raspbian as lxpanel applet
 
 ## Instalation
 
