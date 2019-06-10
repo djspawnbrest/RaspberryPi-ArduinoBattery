@@ -15,6 +15,7 @@ iconState = ""
 ADDON = xbmcaddon.Addon()
 CWD = ADDON.getAddonInfo('path').decode("utf-8")
 PNGVIEWPATH = xbmc.translatePath( os.path.join( CWD, 'resources', 'png' ).encode("utf-8") ).decode("utf-8")
+VIDEOPATH = xbmc.translatePath( os.path.join( CWD, 'resources', 'video' ).encode("utf-8") ).decode("utf-8")
 ICONPATH = xbmc.translatePath( os.path.join( CWD, 'resources', 'icons' ).encode("utf-8") ).decode("utf-8")
 
 # Capacity config
@@ -97,6 +98,12 @@ if __name__ == '__main__':
 
                 chg = str(int(buf[2])) # read charger flag (charger - 1 | 0 - not)
                 changeicon(str(res), chg)
+
+            if res == 0 and int(buf[2]) == 0:
+                xbmc.executebuiltin('XBMC.PlayMedia(' + VIDEOPATH + '/timer.mp4)')
+                time.sleep(60)
+                os.system("shutdown -h now")
+
         except:
             pass
             time.sleep(5) # sleep 5 seconds
