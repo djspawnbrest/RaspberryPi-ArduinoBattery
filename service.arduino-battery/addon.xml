@@ -19,6 +19,8 @@ Shows the battery icon in the bottom-right corner using the analog input of ardu
 		<website>https://vk.com/alexspawn</website>
 		<email>djspawnbrest@gmail.com</email>
 		<news>
+1.0.2 (10 june 2019)
+	- Add video warning shutdown timer on 0 %
 1.0.1 (7 june 2019)
 	- The first release shows the battery icon in the bottom-right corner.
 1.0.0 (6 june 2019)
