@@ -2,7 +2,7 @@
 ## Add-on: Display Battery indicator on libreelec(kodi)
 
 ### Installation
-  1. Download service.arduino-battery.zip to your libreELEC shared folder
+  1. Download `service.arduino-battery.zip` to your libreELEC shared folder
   2. Install as addon (install from .zip file)
   3. Enjoy!
 
